@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# get the C file name from the command line argument or set a default value
+CFILE=${1:-"main.c"}
+
+# run the C file through the preprocessor and save the output into the "c" file
+cpp $CFILE > c
