@@ -22,15 +22,10 @@ void jack_bauer(void)
 	_putchar(':');
 	_putchar(minutes / 10 + '0');
 	_putchar(mins_remainder + '0');
-	_putchar('\n');
-
 	minutes++;
-
-	if (minutes == 60)
-	{
+	_putchar('\n');
+	}
 	hours++;
 	minutes = 0;
-	}
-	}
-	}
+}
 }
