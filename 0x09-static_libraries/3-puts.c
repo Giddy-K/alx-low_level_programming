@@ -1,12 +1,14 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
 /**
- * _puts - Prints a string to stdout
- * @str: The string to be printed
- *
- * Return: void
+ * _puts -prints a string to the console
+ * @s: pointer to the string to be printed
  */
-void _puts(char *str)
+void _puts(char *s)
 {
-	_puts("\"Programming is like building a multilingual puzzle");
-	return (0);
+	puts(s);
 }
