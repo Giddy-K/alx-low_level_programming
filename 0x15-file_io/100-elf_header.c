@@ -65,25 +65,25 @@ void print_magic(unsigned char *e_ident)
 
 /**
  * print_class - prints the class of an ELF header
- * e_ident: pointer to an array containing the ELF class
+ * @e_ident: pointer to an array containing the ELF class
  */
 void print_class(unsigned char *e_ident)
 {
 	printf(" Class: ");
 
-	witch (e_ident[EI_CLASS])
+	switch (e_ident[EI_CLASS])
 	{
-		case ELFCLASSNONE:
-			printf("none\n");
-			break;
-		case ELFCLASS32:
-			printf("ELF32\n");
-			break;
-		case ELFCLASS64:
-			printf("ELF64\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	case ELFCLASSNONE:
+		printf("none\n");
+		break;
+	case ELFCLASS32:
+		printf("ELF32\n");
+		break;
+	case ELFCLASS64:
+		printf("ELF64\n");
+		break;
+	default:
+		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
 
@@ -112,9 +112,9 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- * * print_version - Prints the version of an ELF header
- * * @e_ident: A pointer to an array containing the ELF version.
- * */
+ * print_version - Prints the version of an ELF header
+ * @e_ident: A pointer to an array containing the ELF version.
+ */
 void print_version(unsigned char *e_ident)
 {
 	printf(" Version: %d",
@@ -177,8 +177,8 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - Prints the ABI version of an ELF header.
- * @e_ident: A pointer to an array containing the ELF ABI version.
+ * print_abi - prints the ABI version of an ELF header
+ * @e_ident: pointer to an array containing the ELF ABI version
  */
 void print_abi(unsigned char *e_ident)
 {
@@ -275,11 +275,10 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	int o, r;
 
 	o = open(argv[1], O_RDONLY);
-
 	if (o == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n",
-				argv[1]);
+argv[1]);
 		exit(98);
 	}
 	header = malloc(sizeof(Elf64_Ehdr));
@@ -287,7 +286,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	{
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n",
-				argv[1]);
+argv[1]);
 		exit(98);
 	}
 	r = read(o, header, sizeof(Elf64_Ehdr));
@@ -296,7 +295,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		free(header);
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n",
-				argv[1]);
+argv[1]);
 		exit(98);
 	}
 
